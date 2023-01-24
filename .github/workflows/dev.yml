@@ -11,7 +11,7 @@ jobs:
 
   build-dev:
     needs: check
-    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
+    uses: Nano-IT/workflows/.github/workflows/build-static.yml@v1
 
   deploy-dev:
     needs: build-dev
