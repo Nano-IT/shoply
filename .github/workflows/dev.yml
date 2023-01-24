@@ -21,10 +21,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Show repo
-        run: echo ${{ github.repository }}
+        run: |
+          REPO=$(echo ${{ github.repository }})
+          echo "docker.pkg.github.com/$REPO/dev"
 
-      - name: Show github
-        run: echo ${{ github }}
 #    needs: build-dev
 #    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
 #    secrets: inherit
