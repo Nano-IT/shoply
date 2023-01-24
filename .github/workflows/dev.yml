@@ -16,7 +16,7 @@ jobs:
 
   deploy-dev:
 #    needs: build-dev
-    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@main
+    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
     secrets: inherit
     with:
       tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
