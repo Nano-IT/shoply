@@ -24,3 +24,4 @@ jobs:
     needs: deploy-dev
     uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
     secrets: inherit
+
