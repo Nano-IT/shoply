@@ -7,17 +7,25 @@ on:
 
 jobs:
   check:
-    uses: Nano-IT/workflows/.github/workflows/check.yml@main
+    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   build-dev:
     needs: check
-    uses: Nano-IT/workflows/.github/workflows/build.yml@main
+    uses: Nano-IT/workflows/.github/workflows/build-static.yml@v1
 
   deploy-dev:
     needs: build-dev
-    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@main
+    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
     secrets: inherit
     with:
-      tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
-      file:  "codedeploy/Dockerfile"
+      file: "codedeploy/Dockerfile"
+
+  update-services-dev:
+    needs: deploy-dev
+    uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
+    secrets: inherit
+
+
+
+
 

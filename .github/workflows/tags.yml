@@ -14,10 +14,16 @@ jobs:
 
   build:
     needs: check
-    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
+    uses: Nano-IT/workflows/.github/workflows/build-static.yml@v1
 
   deploy:
     needs: build
-    uses: Nano-IT/workflows/.github/workflows/deploy-prod.yml@v1
+    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
     secrets: inherit
+    with:
+      file: "codedeploy/Dockerfile"
 
+  update-services-dev:
+    needs: deploy-dev
+    uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
+    secrets: inherit
