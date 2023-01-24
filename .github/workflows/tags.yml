@@ -23,7 +23,7 @@ jobs:
     with:
       file: "codedeploy/Dockerfile"
 
-  update-services-dev:
-    needs: deploy-dev
+  update-services:
+    needs: deploy
     uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
     secrets: inherit
