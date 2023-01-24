@@ -17,31 +17,9 @@ jobs:
   deploy-dev:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v3
-
-      - name: Show repo
-        run: |
-          REPO=$(echo ${{ github.repository }})
-          echo "docker.pkg.github.com/$REPO/dev"
-          deployment="development"
-
-      - name: Install Semversioner
-        run: pip install semversioner
-
-      - name: Show repo
-        run: |
-          if [ "$deployment" = "development" ]; then
-            TAG="${{ github.head_ref }}"
-          else
-            TAG=$(semversioner current-version)
-          fi
-          REPO=$(echo ${{ github.repository }})
-          echo "docker.pkg.github.com/$REPO/$TAG"
-
 #    needs: build-dev
-#    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
-#    secrets: inherit
+    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
+    secrets: inherit
 #    with:
 #      tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
 #      file:  "codedeploy/Dockerfile"
