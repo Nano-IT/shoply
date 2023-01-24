@@ -26,12 +26,15 @@ jobs:
           echo "docker.pkg.github.com/$REPO/dev"
           deployment="development"
 
+      - name: Install Semversioner
+        run: pip install semversioner
+
       - name: Show repo
         run: |
           if [ "$deployment" = "development" ]; then
-            TAG= "{${ github.head_ref }}"
+            TAG="${{ github.head_ref }}"
           else
-            TAG=$(echo VERSION)
+            TAG=$(semversioner current-version)
           fi
           REPO=$(echo ${{ github.repository }})
           echo "docker.pkg.github.com/$REPO/$TAG"
