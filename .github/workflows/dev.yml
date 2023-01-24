@@ -6,20 +6,19 @@ on:
       - dev
 
 jobs:
-#  check:
-#    uses: Nano-IT/workflows/.github/workflows/check.yml@main
-#
-#  build-dev:
-#    needs: check
-#    uses: Nano-IT/workflows/.github/workflows/build.yml@main
+  check:
+    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
+
+  build-dev:
+    needs: check
+    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
 
   deploy-dev:
-#    runs-on: ubuntu-latest
-#    steps:
-#    needs: build-dev
+    runs-on: ubuntu-latest
+    steps:
+    needs: build-dev
     uses: Nano-IT/workflows/.github/workflows/build.yml@v1
     secrets: inherit
-#    with:
-#      tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
-#      file:  "codedeploy/Dockerfile"
+    with:
+      file:  "codedeploy/Dockerfile"
 
