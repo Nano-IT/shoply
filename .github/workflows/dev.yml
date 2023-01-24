@@ -15,10 +15,20 @@ jobs:
 
 
   deploy-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Show repo
+        run: ${{ github.repository } }
+
+      - name: Show github
+        run: ${{ github }}
 #    needs: build-dev
-    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
-    secrets: inherit
-    with:
-      tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
-      file:  "codedeploy/Dockerfile"
+#    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
+#    secrets: inherit
+#    with:
+#      tags: "docker.pkg.github.com/tudorteisanu/shoply/dev"
+#      file:  "codedeploy/Dockerfile"
 
