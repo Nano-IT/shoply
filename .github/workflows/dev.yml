@@ -20,8 +20,6 @@ jobs:
     with:
       file: "codedeploy/Dockerfile"
 
-
-
   update-services-dev:
     needs: deploy-dev
     uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
