@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Show repo
-        run: echo ${{ github.repository } }
+        run: echo ${{ github.repository }}
 
       - name: Show github
         run: echo ${{ github }}
