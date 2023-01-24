@@ -24,6 +24,17 @@ jobs:
         run: |
           REPO=$(echo ${{ github.repository }})
           echo "docker.pkg.github.com/$REPO/dev"
+          deployment="development"
+
+      - name: Show repo
+        run: |
+          if [ "$deployment" = "development" ]; then
+            TAG= "{${ github.head_ref }}"
+          else
+            TAG=$(echo VERSION)
+          fi
+          REPO=$(echo ${{ github.repository }})
+          echo "docker.pkg.github.com/$REPO/$TAG"
 
 #    needs: build-dev
 #    uses: Nano-IT/workflows/.github/workflows/deploy-dev.yml@v1
