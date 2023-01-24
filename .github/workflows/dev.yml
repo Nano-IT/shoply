@@ -14,8 +14,6 @@ jobs:
     uses: Nano-IT/workflows/.github/workflows/build.yml@v1
 
   deploy-dev:
-    runs-on: ubuntu-latest
-    steps:
     needs: build-dev
     uses: Nano-IT/workflows/.github/workflows/build.yml@v1
     secrets: inherit
