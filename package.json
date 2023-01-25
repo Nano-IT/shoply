@@ -1,6 +1,6 @@
 {
   "name": "shoply",
-  "version": "9.0.1",
+  "version": "10.0.0",
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
