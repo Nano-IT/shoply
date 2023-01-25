@@ -1,20 +1,29 @@
-name: Tags
+name: Production
 
 on:
   push:
     tags:
       - '*'
+  create:
+    tags:
+      - '*'
 
 jobs:
   check:
-    uses: ./.github/workflows/check.yml
+    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   build:
     needs: check
-    uses: ./.github/workflows/build.yml
+    uses: Nano-IT/workflows/.github/workflows/build-static.yml@v1
 
   deploy:
     needs: build
-    uses: ./.github/workflows/deploy-prod.yml
+    uses: Nano-IT/workflows/.github/workflows/build.yml@v1
     secrets: inherit
+    with:
+      file: "codedeploy/Dockerfile"
 
+  update-services:
+    needs: deploy
+    uses: Nano-IT/workflows/.github/workflows/update-services.yml@v1
+    secrets: inherit

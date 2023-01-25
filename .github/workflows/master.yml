@@ -1,4 +1,4 @@
-name: Deploy PROD
+name: Release
 
 on:
   push:
@@ -7,10 +7,13 @@ on:
 
 jobs:
   check:
-    uses: ./.github/workflows/check.yml
+    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   release:
     needs: check
-    uses: ./.github/workflows/release.yml
+    uses: Nano-IT/workflows/.github/workflows/release.yml@v1
+    with:
+      environment: development
     secrets: inherit
+
 
