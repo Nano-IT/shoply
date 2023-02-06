@@ -4,8 +4,12 @@ on:
   push:
     tags:
       - '*'
+    branches-ignore:
+      - '*'
   create:
     tags:
+      - '*'
+    branches-ignore:
       - '*'
 
 jobs:
