@@ -1,11 +1,6 @@
 name: Production
 
 on:
-  push:
-    tags:
-      - '*'
-    branches-ignore:
-      - '*'
   create:
     tags:
       - '*'
