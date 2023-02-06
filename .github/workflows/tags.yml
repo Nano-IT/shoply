@@ -9,12 +9,14 @@ on:
 
 jobs:
   return_if_not_master:
+    runs-on: ubuntu-latest
     steps:
       - name: Exit if not on production branch
         if: endsWith(github.event.base_ref, 'master') == false
         run: exit -1
 
   check:
+    needs: return_if_not_master
     uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   build:
