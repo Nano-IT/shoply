@@ -4,21 +4,9 @@ on:
   create:
     tags:
       - '*'
-    branches-ignore:
-      - '*'
 
 jobs:
-  return_if_not_master:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Exit if not on production branch
-        env:
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-        if: !contains(env.BRANCH_NAME, 'master')
-        run: exit -1
-
   check:
-    needs: return_if_not_master
     uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   build:
