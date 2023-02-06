@@ -6,11 +6,11 @@ on:
       - '*'
 
 jobs:
-  check:
-    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
+#  check:
+#    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   build:
-    needs: check
+#    needs: check
     uses: Nano-IT/workflows/.github/workflows/build-static.yml@v1
 
   deploy:

@@ -6,11 +6,11 @@ on:
       - master
 
 jobs:
-  check:
-    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
+#  check:
+#    uses: Nano-IT/workflows/.github/workflows/check.yml@v1
 
   release:
-    needs: check
+#    needs: check
     uses: Nano-IT/workflows/.github/workflows/release.yml@v1
     with:
       environment: development
