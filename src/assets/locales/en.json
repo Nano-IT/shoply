@@ -7,6 +7,11 @@
       "newUser": "New user?",
       "registerNow": "Register now",
       "successMessage": "Password successful rested!"
+    },
+    "register": {
+      "title": "Register",
+      "login": "Already have an account? Login.",
+      "submit": "Register"
     }
   },
   "base": {

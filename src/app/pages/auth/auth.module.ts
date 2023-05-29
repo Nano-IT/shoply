@@ -9,11 +9,17 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoggedInGuard } from '@/app/guards/logged-in.guard';
+import { RegisterComponent } from '@/pages/auth/register/register.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
     canActivate: [LoggedInGuard],
   },
   {
@@ -31,6 +37,7 @@ const routes: Routes = [
     LoginComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,

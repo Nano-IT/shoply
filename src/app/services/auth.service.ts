@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   CredentialsInterface,
   LoginInterface,
+  RegisterInterface,
   TokensInterface,
   UserInterface,
 } from '@/ts/interfaces';
@@ -19,6 +20,13 @@ export class AuthService {
 
   login(payload: LoginInterface): Observable<CredentialsInterface> {
     return this.http.post<CredentialsInterface>(ApiRoutes.Login, payload);
+  }
+
+  register(payload: RegisterInterface): Observable<CredentialsInterface> {
+    return this.http.post<CredentialsInterface>(ApiRoutes.Register, {
+      ...payload,
+      roles: ['user'],
+    });
   }
 
   logout(): Observable<void> {

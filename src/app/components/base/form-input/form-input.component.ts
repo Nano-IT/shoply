@@ -16,6 +16,7 @@ export class FormInputComponent implements ControlValueAccessor {
   @Input() icon: string | undefined = undefined;
   @Input() type: string = 'text';
   @Input() disabled: boolean = false;
+  @Input() label: string = '';
 
   constructor(@Self() @Optional() private control: NgControl) {
     this.control.valueAccessor = this;

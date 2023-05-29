@@ -1,5 +1,6 @@
 export enum ApiRoutes {
   Login = '/auth/login',
+  Register = '/auth/register',
   Logout = '/auth/logout',
   ForgotPassword = '/auth/forgot-password',
   CheckResetToken = '/auth/check-reset-token',

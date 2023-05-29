@@ -8,6 +8,7 @@ import {
   Logout,
   FetchUser,
   RemoveToken,
+  Register,
 } from './auth.action';
 import { CredentialsInterface, UserInterface } from '@/ts/interfaces';
 import { LocalstorageKeys } from '@/ts/enum';
@@ -97,6 +98,22 @@ export class AuthState {
   @Action(Login)
   login(ctx: StateContext<AuthStateModel>, action: Login) {
     return this.authService.login(action.payload).pipe(
+      tap(({ accessToken, refreshToken, user }: CredentialsInterface) => {
+        ctx.patchState({
+          accessToken,
+          refreshToken,
+          user,
+        });
+
+        localStorage.setItem(LocalstorageKeys.AccessToken, accessToken);
+        localStorage.setItem(LocalstorageKeys.RefreshToken, refreshToken);
+      })
+    );
+  }
+
+  @Action(Register)
+  register(ctx: StateContext<AuthStateModel>, action: Register) {
+    return this.authService.register(action.payload).pipe(
       tap(({ accessToken, refreshToken, user }: CredentialsInterface) => {
         ctx.patchState({
           accessToken,
